@@ -5,15 +5,15 @@
 .section .data
 	
 first_in:
-	.int 0
+	.quad 0
 second_in:
-	.int 0
+	.quad 0
 	
 rules:
-	.asciz "Simple String to int transformation."
+	.asciz "Simple String to Int to String transformation, using previous project.\n"
 
 first_input_msg_to_user:
-	.asciz "First input : "
+	.asciz "First input  : "
 
 second_input_msg_to_user:
 	.asciz "Second input : "
@@ -26,14 +26,14 @@ intro_msg:
 	mov $1, %rax
 	mov $1, %rdi
 	lea [rules] , %rsi
-	mov $36, %rdx
+	mov $71, %rdx
 	syscall	
 	
 first_input_msg:
 	movq $1, %rax
 	movq $1, %rdi
 	leaq [first_input_msg_to_user] , %rsi
-	movq $14, %rdx
+	movq $15, %rdx
 	syscall	
 
 first_input_user:
@@ -66,6 +66,17 @@ transforming_to_int:
 	pushq $second_input_buffer
 	callq convert_to_int
 	movq  %rdx, second_in
+	
+	pushq first_in
+	pushq second_in
+	callq power_func
+	
+	pushq %rax
+	callq int_to_string
+	
+	movq $60, %rax
+	movq $1, %rdi
+	syscall	
 
 exit_function:
 	movq %rbp, %rsp
@@ -82,11 +93,11 @@ convert_to_int:
 	movq  16(%rbp), %rsi
 
 loop:
-	cmpq  $10, %rdi /*Parcourir les 10 octets du buffer*/
+	cmpq  $10, %rdi #check all 10 bytes of allocated user input buffer
 	je    revert_loop_init
 	xor   %rax, %rax
 	movb  (%rsi, %rdi, 1), %cl
-	cmpb  $'0', %cl /*Check result isn't /n or other non necessary character.*/
+	cmpb  $'0', %cl #check if result isn't a digit
 	jl    continue_loop
 	cmpb  $'9', %cl
 	jg    continue_loop
@@ -94,6 +105,7 @@ loop:
 	incq  %rbx
 	movb  %cl, %al
 	pushq %rax
+	
 continue_loop:
 	incq  %rdi
 	jmp   loop
@@ -116,12 +128,13 @@ revert_loop:
 multiply_ten:
 	movq  %rbx, %r8
 	subq  %r8,  %r9
+	
 multiply:
 	cmpq  $0, %r9
 	je    exit
 	imulq $10, %rsi
 	decq  %r9
-	jmp  multiply 
+	jmp   multiply 
 exit:
 	movq  %r10, %r9
 	retq
