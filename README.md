@@ -4,28 +4,28 @@ Two projects are present:
 
 #### IntToString
 
-IntToString is a simple project to convert integer to string, and display the result.
+IntToString is a simple project which purpose is to convert integer to string, and to display the result.
 
-The purpose of the project is to understand byte and bits manipulation in assembly. It helps also understand the type notion present in higher level programming language.
+The goal of the project is to understand byte and bits manipulation in Assembly. It also helps to understand the 'type' notion present in higher level programming languages.
 
 #### StringToIntToString
 
 StringToIntToString is another project with three objectives.
 
-First, to convert a user input into integer. 
-Second, multiplying the user input 
-Third, display the result.
+First, to convert user inputs into integer. 
+Second, multiplying the user inputs.
+Third, to display the result.
 
-It uses all concepts and different projects previously created in order to try to do a synthesis.
+It uses all concepts and differents projects previously created in order to do a synthesis.
 
-None of these projects are 'completed'. A verification of user input, exception management, even addition directly on String could be done. It wasn't the goal of these projects. The purpose was to gain knowledge about type manipulation in assembly code.
+None of these projects are 'completed'. A verification of user inputs, exception management, even addition directly on String, could be done. It wasn't the goal of these projects. The purpose was to gain knowledge about 'type' manipulation in Assembly code, which is the latest human readable programming language.
 
 ## Execution
 
-To see all phases needed to create the executable, you can relate to the script provided. 
+To see all phases needed to create the executables, you can relate to the script provided. 
 
 ```bash
-./compile_execute.sh
+./int_to_string.sh
 ```
 
 ```bash
@@ -34,6 +34,6 @@ To see all phases needed to create the executable, you can relate to the script 
 
 ## Conclusion of these simple projects
 
-Assembly code is very a lot of fun. Concepts behind it are passionating, but its only the introduction of the 'infinite rabbit hole' of computer science theory from computer craftmanship.
+Assembly code is a lot of fun. Concepts behind it are passionating, but it is only the introduction of the long journey of computer science theory emanating from computer craftmanship.
 
 I really encourage you to try Assembly Code. You can start at : https://cs61.seas.harvard.edu/site/2023/#gsc.tab=0
